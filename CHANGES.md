@@ -1,5 +1,14 @@
 # OmegaT (cApStAn) customization
 
+## Update 73_cs0 (2021-11-29)
+
+* Scripts: Added `goto_next_nonunique.groovy` script to go to the next repeated segment in the project.
+* Config: Added `goto_next_nonunique.groovy` script to slow 10.
+
+## Update 72_cs0 (2021-11-23)
+
+* Scripts: Added `delete_unneeded_files.groovy` script to remove custom files that should not be there (anymore)
+
 ## Update 70_cs0 (2021-11-05)
 
 * Scripts: Fixed bug with project not reloading after modifying XLIFF files (this reverts change in `pisaconv.groovy` made in 26_csp).

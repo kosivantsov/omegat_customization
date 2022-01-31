@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<omegat>
+  <preference version="1.0">
+    <glossary_replace_on_insert>true</glossary_replace_on_insert>
+    <glossary_not_exact_match>false</glossary_not_exact_match>
+    <notify_glossary_hits>true</notify_glossary_hits>
+    <source_font>Dialog</source_font>
+    <source_font_size>14</source_font_size>
+    <sb_progress_mode>DEFAULT</sb_progress_mode>
+    <ac_glossary_enabled>true</ac_glossary_enabled>
+    <ac_autotext_enabled>true</ac_autotext_enabled>
+    <ac_chartable_enabled>true</ac_chartable_enabled>
+    <ac_chartable_use_custom_chars>true</ac_chartable_use_custom_chars>
+    <ac_chartable_custom_char_string>«»”“‘’„…€¢£$¥₩™®©²³ªº–—×÷·±≤≥≠≈√°∞µ½⅓¼⁄٠١٢٣٤٥٦٧٨٩</ac_chartable_custom_char_string>
+    <ac_chartable_unique_custom_chars>true</ac_chartable_unique_custom_chars>
+    <display_modification_info>all</display_modification_info>
+    <view_option_source_all_bold>true</view_option_source_all_bold>
+    <view_option_source_active_bold>true</view_option_source_active_bold>
+    <lt_disabled>false</lt_disabled>
+    <automatically_check_version>false</automatically_check_version>
+    <taas_lookup>false</taas_lookup>
+    <ac_show_suggestions_automatically>true</ac_show_suggestions_automatically>
+    <mt_auto_fetch>false</mt_auto_fetch>
+    <dictionary_fuzzy_matching>true</dictionary_fuzzy_matching>
+    <allow_auto_spellchecking>true</allow_auto_spellchecking>
+    <auto_save_interval>120</auto_save_interval>
+    <COLOR_ACTIVE_SOURCE>#ccffcc</COLOR_ACTIVE_SOURCE>
+    <COLOR_MATCHES_DEL_ACTIVE>#ff0000</COLOR_MATCHES_DEL_ACTIVE>
+    <COLOR_PLACEHOLDER>#ff0000</COLOR_PLACEHOLDER>
+    <COLOR_SOURCE>#e5e5e5</COLOR_SOURCE>
+    <COLOR_REMOVETEXT_TARGET>#7b00ff</COLOR_REMOVETEXT_TARGET>
+	<COLOR_MARK_COMES_FROM_TM_XAUTO>#ffccff</COLOR_MARK_COMES_FROM_TM_XAUTO>
+    <COLOR_MARK_COMES_FROM_TM_XENFORCED>#ffd596</COLOR_MARK_COMES_FROM_TM_XENFORCED>
+    <dictionary_url>https://cat.capstan.be/OmegaT/hunspell</dictionary_url>
+    <display_segment_sources>true</display_segment_sources>
+    <loose_tag_ordering>false</loose_tag_ordering>
+    <mark_autopopulated>true</mark_autopopulated>
+    <mark_bidi>false</mark_bidi>
+    <mark_nbsp>true</mark_nbsp>
+    <mark_non_unique_segments>true</mark_non_unique_segments>
+    <mark_noted_segments>false</mark_noted_segments>
+    <mark_untranslated_segments>true</mark_untranslated_segments>
+    <mark_whitespace>true</mark_whitespace>
+    <save_auto_status>true</save_auto_status>
+    <scripts_quick_1>check_rules.groovy</scripts_quick_1>
+    <scripts_quick_10>goto_next_nonunique.groovy</scripts_quick_10>
+    <scripts_quick_11>fetch_glossaries.groovy</scripts_quick_11>
+    <scripts_quick_12>updateConfigBundle.groovy</scripts_quick_12>
+    <scripts_quick_2>write_project2excel.groovy</scripts_quick_2>
+    <scripts_quick_3>adapt_tags_to_match_target.groovy</scripts_quick_3>
+    <scripts_quick_4>strip_bidi_marks.groovy</scripts_quick_4>
+    <scripts_quick_5>replace_strip_tags.groovy</scripts_quick_5>
+    <scripts_quick_6>strip_html_tags.groovy</scripts_quick_6>
+    <scripts_quick_7>replace_with_match_no_tags.groovy</scripts_quick_7>
+    <scripts_quick_8>copy_source.groovy</scripts_quick_8>
+    <scripts_quick_9>tagwipe.groovy</scripts_quick_9>
+    <search_window_auto_sync>false</search_window_auto_sync>
+    <search_window_back_to_initial_segment>false</search_window_back_to_initial_segment>
+    <search_window_file_names>true</search_window_file_names>
+    <search_window_exclude_orphans>false</search_window_exclude_orphans>
+    <tagValidation_customPattern>&lt;/?(EMPTY|[bui]|sup|sub|strong|strike|small|ul|ol|li|a|em|br\s*/?|img|var|span|div|p|run\d|style|center)(\s+[^&lt;&gt;]+)??&gt;|^((PA|Q)\d[A-Z0-9]+)$|&amp;lt;br\s?/&amp;gt;|[▼►⇑●∠]|&amp;#x\w+?;|%s|(\{#.+?\}|\{@.*?\}|\{[A-Z_]+\}|\[[A-Z_]+\]|\^\w+\$)</tagValidation_customPattern>
+    <tagValidation_removePattern>(?:&lt;)(?!\s|(?:&lt;)|(/?(EMPTY|[bui]|sup|sub|strong|strike|small|ul|ol|li|a|em|br\s*/?|img|var|span|div|p|run\d|style|center)(\s+[^&gt;]+)?(?:&gt;))|/?[a-z]\d+/?(?:&gt;)).*?(?:&gt;)|(?:&lt;)[\w.-]+@[\w.-]+(?:&gt;)|###+|[xX]{3,}</tagValidation_removePattern>
+    <transtips>true</transtips>
+    <wf_allowTransEqualToSrc>true</wf_allowTransEqualToSrc>
+    <wf_convertNumbers>true</wf_convertNumbers>
+    <wf_insertBestMatch>false</wf_insertBestMatch>
+    <wf_noSourceText>true</wf_noSourceText>
+    <ext_tmx_sort_key>SCORE</ext_tmx_sort_key>
+    <ext_tmx_match_template>${id}. ${fuzzyFlag}${diff}
+&gt;&gt;&gt;
+${targetText}
+&lt;${score}/${noStemScore}/${adjustedScore}%&gt; ${fileShortPath}</ext_tmx_match_template>
+    <ext_tmx_show_level2>false</ext_tmx_show_level2>
+    <ext_tmx_use_slash>false</ext_tmx_use_slash>
+    <script_window_x>50</script_window_x>
+    <script_window_y>80</script_window_y>
+    <script_window_width>1150</script_window_width>
+    <script_window_height>650</script_window_height>
+    <screen_x>0</screen_x>
+    <screen_y>0</screen_y>
+    <screen_width>929</screen_width>
+    <screen_height>840</screen_height>
+    <project_files_window_x>640</project_files_window_x>
+    <project_files_window_y>340</project_files_window_y>
+    <project_files_window_width>640</project_files_window_width>
+    <project_files_window_height>400</project_files_window_height>
+    <stat_counting_custom_tags>false</stat_counting_custom_tags>
+    <stat_counting_protected_text>false</stat_counting_protected_text>
+    <segment_properties_notify_props>comment, note, hasNote, isAlt, isDup</segment_properties_notify_props>
+    <ext_tmx_fuzzy_match_threshold>50</ext_tmx_fuzzy_match_threshold>
+  </preference>
+</omegat>

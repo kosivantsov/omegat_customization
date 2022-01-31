@@ -1,0 +1,10 @@
+MainMenuShortcuts.properties
+plugins/index.php
+plugins/list_files.txt
+plugins/list_paths.txt
+scripts/project_changed/container_assets.groovy
+scripts/container_assets.groovy
+scripts/project_changed/restore_files_order.groovy
+scripts/FlushUneditedEntriesCLI.groovy
+scripts/restore_default_trans_cli.groovy
+scripts/clear_working_tm.groovy

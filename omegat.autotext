@@ -1,0 +1,82 @@
+\lq	“	upper left double quotation mark (U+201C)
+\rq	”	upper right double quotation mark (U+201D)
+\lolq	„	lower left (low-9) double quotation mark (U+201E)
+<< 	«	left-pointing double angle quotation mark (U+00AB)
+>> 	»	right-pointing duoble angle quotation mark (U+00BB)
+\laquo 	«	left-pointing double angle quotation mark (U+00AB)
+\raquo 	»	right-pointing duoble angle quotation mark (U+00BB)
+\rsquo	’	right single quotation mark (U+2019)
+\apos	’	right single quotation mark (U+2019)
+\lsquo	‘	left single quotation mark (U+2018)
+\x	×	multiplication symbol / vector product
+\times	×	multiplication symbol
+\nbsp	 	non-breaking space 
+\tm	™	trademark symbol
+\reg	®	registered (U+00AE)
+(tm)	™	trademark symbol
+\sup1	¹	superscript 1 
+\sup3	³	superscript 3 
+\sup2	²	superscript 2 
+\rlm	‏	RLM
+\minus	–	n-dash (U+2013)
+\ndash	–	n-dash (U+2013)
+\mdash	—	m-dash (U+2014)
+\pi	π	mathematical pi letter
+\thinspace	 	thin space
+\ellipsis	…	horizontal ellipsis
+\divided	÷	division
+\middot	·	 interpunct/interpoint/middle dot/middot/centered dot (multiplication / scalar product)
+\interpunct	·	 interpunct/interpoint/middle dot/middot/centered dot (multiplication / scalar product)
+\bullet	∙	bullet operator (U+2219)
+\pm	±	plus or minus
+\le	≤	less than or equal to
+\ge	≥	greater than or equal to
+\ne	≠	does not equal
+\approx	≈	 approximately equal to
+\emptyset	∅	empty set
+\sqrt	√	square root (U+221A)
+\deg	°	degree
+\infty	∞	infinity
+\copyright	©	copyright symbol
+\smalle	ᵉ	modifier letter small e (U+1D49)
+\Omegat	Ω	Greek capital letter omega / Ohm 
+\pound	£	pound currency
+\euro	€	euro currency
+\cent	¢	cent (U+00A2)
+\yen	¥	yen (U+00A5)
+\ordf	ª	feminine ordinal indicator (U+00AA)
+\ordm	º	masculine ordinal indicator (U+00BA)
+\shy	­	soft hyphen (U+00AD)
+\micro	µ	micro (U+00B5)
+\not	¬	not sign (U+00AC)
+\frac12	½ 	vulgar fraction 1/2 / half
+\frac13	⅓ 	vulgar fraction 1/3 / third
+\frac23	⅔	vulgar fraction 2/3 
+\frac14	¼	vulgar fraction 1/4 / quarter
+\frac34	¾	vulgar fraction 3/4
+\frac15	⅕	vulgar fraction 1/5 / fifth
+\frac25	⅖	vulgar fraction 2/5
+\frac35	⅗	vulgar fraction 3/5
+\frac45	⅘	vulgar fraction 4/5
+\frac16	⅙	vulgar fraction 1/6
+\frac56	⅚	vulgar fraction 5/6
+\frac17	⅐	vulgar fraction 1/7
+\frac18	⅛	vulgar fraction 1/8
+\frac38	⅜	vulgar fraction 3/8
+\frac58	⅝	vulgar fraction 5/8
+\frac78	⅞	vulgar fraction 7/8
+\frac19	⅑	vulgar fraction 1/9
+\frac110	⅒	vulgar fraction 1/10
+\fracslash	⁄	fraction slash (E+2044)
+\9	٩	
+\8	٨	
+\7	٧	
+\6	٦	
+\5	٥	
+\4	٤	
+\3	٣	
+\2	٢	
+\1	١	
+\0	٠	
+\ar_percent	⁒	commercial minus sign (U+2052) 
+\nbhy	‑	non-breaking hyphen
