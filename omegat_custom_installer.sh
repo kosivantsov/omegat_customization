@@ -38,6 +38,7 @@
 ## execution
 
 ## sudo sh -c "$(curl -fsSL https://gist.githubusercontent.com/msoutopico/foobar/omegat_installer.sh)" 
+## bash -c "$(curl -fsSL https://raw.githubusercontent.com/capstanlqc/omegat_customization/master/omegat_custom_installer.sh)" 
 ## or
 ## curl tps://gist.githubusercontent.com/msoutopico/foobar/omegat_installer.sh | sh
 
@@ -196,11 +197,11 @@ then
   SCRIPTS_DIR="/home/$USER/.omegat/scripts" #|| SCRIPTS_DIR="/opt/omegat/OmegaT_${VERSION}/scripts"
   perl -i -pe "s~(?<=<scripts_dir>)scripts~${SCRIPTS_DIR}~" omegat.prefs
 
-  cp -r /opt/omegat/scripts/* $SCRIPTS_DIR # move standar scripts to user config dir
+  sudo cp -r /opt/omegat/scripts/* $SCRIPTS_DIR # move standar scripts to user config dir
   cp -r * /home/$USER/.omegat
 
 else
-  cp -rf plugins scripts /opt/omegat/OmegaT_$VERSION # add add-ons to install dir
+  sudo cp -rf plugins scripts /opt/omegat/OmegaT_$VERSION # add add-ons to install dir
 fi
 
 #Create a launch command
