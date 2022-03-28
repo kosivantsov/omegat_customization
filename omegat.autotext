@@ -80,3 +80,12 @@
 \0	٠	
 \ar_percent	⁒	commercial minus sign (U+2052) 
 \nbhy	‑	non-breaking hyphen
+\ordrd	ʳᵈ	rd ordinal superscript
+\ordnd	ⁿᵈ	nd ordinal superscript
+\ordst	ˢᵗ	st ordinal superscript
+\ordth	ᵗʰ	th ordinal superscript
+\mathx	𝑥	Mathematical italic small x
+\orde	ᵉ	superscript small e (for ordinals in French)
+\supe	ᵉ	superscript small e (for ordinals in French)
+\ordde	ᵈᵉ	superscript small de (for 2nd ordinal in French)
+\supde	ᵈᵉ	superscript small de (for 2nd ordinal in French)

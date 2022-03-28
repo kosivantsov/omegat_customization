@@ -6,6 +6,7 @@
 * Scripts: Added `write_xliff.groovy` script, which exports the project as XLIFF.
 * Config: Updated OMT packing/unpacking settings to prevent including Word files in the project package.
 * Config: Updated match template: more compact and more informative (includes ID and filename now)
+* Config: Updated autotext entries (Mathematical italic small x and some ordinal number superscripts)
 
 ## Update 73_cs0 (2021-11-29)
 
