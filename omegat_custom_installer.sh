@@ -196,9 +196,13 @@ then
   SCRIPTS_DIR="/home/$USER/.omegat/scripts" #|| SCRIPTS_DIR="/opt/omegat/OmegaT_${VERSION}/scripts"
   perl -i -pe "s~(?<=<scripts_dir>)scripts~${SCRIPTS_DIR}~" omegat.prefs
 
+  echo "mkdir -p $SCRIPTS_DIR"
   mkdir -p $SCRIPTS_DIR
-  sudo chmod 775 $SCRIPTS_DIR  
+  echo "sudo chmod 775 $SCRIPTS_DIR"
+  sudo chmod 775 $SCRIPTS_DIR
+  echo "sudo cp -r /opt/omegat/scripts/* $SCRIPTS_DIR"
   sudo cp -r /opt/omegat/scripts/* $SCRIPTS_DIR # move standar scripts to user config dir
+  echo "cp -r * /home/$USER/.omegat"
   cp -r * /home/$USER/.omegat
 
 else
