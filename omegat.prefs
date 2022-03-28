@@ -44,7 +44,7 @@
     <save_auto_status>true</save_auto_status>
     <scripts_quick_1>check_rules.groovy</scripts_quick_1>
     <scripts_quick_10>goto_next_nonunique.groovy</scripts_quick_10>
-    <scripts_quick_11>fetch_glossaries.groovy</scripts_quick_11>
+    <scripts_quick_11>fetch_glossaries.groovy</scripts_quick_11>spellcheker
     <scripts_quick_12>updateConfigBundle.groovy</scripts_quick_12>
     <scripts_quick_2>write_project2excel.groovy</scripts_quick_2>
     <scripts_quick_3>adapt_tags_to_match_target.groovy</scripts_quick_3>
@@ -67,10 +67,9 @@
     <wf_noSourceText>true</wf_noSourceText>
     <ext_tmx_sort_key>SCORE</ext_tmx_sort_key>
     <ext_tmx_match_template>${id}. ${fuzzyFlag}${diff}
-&gt;&gt;&gt;
-${targetText}
-&lt;${score}/${noStemScore}/${adjustedScore}%&gt; ${fileShortPath}</ext_tmx_match_template>
-    <ext_tmx_show_level2>false</ext_tmx_show_level2>
+▷ ${score}/${noStemScore}/${adjustedScore}% ‹@{id}:@{file}› ¶${fileShortPath}
+${targetText}</ext_tmx_match_template>
+    <ext_tmx_show_level2>true</ext_tmx_show_level2>
     <ext_tmx_use_slash>false</ext_tmx_use_slash>
     <script_window_x>50</script_window_x>
     <script_window_y>80</script_window_y>
