@@ -154,7 +154,8 @@ arch=`uname -m` #detect if computer is 32 or 64 bits
 if [[ "$arch" == "x86_64" ]]
 then
   # 64-bit 
-  wget -O omegat.tar.bz2 https://downloads.sourceforge.net/project/omegat/OmegaT%20-%20Latest/OmegaT%20${VERSION}/OmegaT_${VERSION}_Beta_Linux_64.tar.bz2
+  #wget -O omegat.tar.bz2 https://downloads.sourceforge.net/project/omegat/OmegaT%20-%20Latest/OmegaT%20${VERSION}/OmegaT_${VERSION}_Beta_Linux_64.tar.bz2
+  cp ~/Downloads/OmegaT_5.7.1_Beta_Linux_64.tar.bz2 omegat.tar.bz2
   
   #extract OmegaT archive
   echo "Extracting OmegaT..."
@@ -176,7 +177,7 @@ cd OmegaT_${VERSION}*
 #Run omegat installer
 echo "Installing OmegaT..."
 bash linux-install.sh
-cd ..
+cd .. # back to tmp
 
 # we are in ~/.omegat/tmp
 
@@ -192,18 +193,17 @@ rm todo.md
 echo "Applying the customization..."
 if [[ "$INTERFACE_CHOICE" == 1 ]] # gui
 then 
-  # update path to scripts directory
+  
   SCRIPTS_DIR="/home/$USER/.omegat/scripts" #|| SCRIPTS_DIR="/opt/omegat/OmegaT_${VERSION}/scripts"
-  perl -i -pe "s~(?<=<scripts_dir>)scripts~${SCRIPTS_DIR}~" omegat.prefs
-
   echo "mkdir -p $SCRIPTS_DIR"
   mkdir -p $SCRIPTS_DIR
-  echo "sudo chmod 775 $SCRIPTS_DIR"
-  sudo chmod 775 $SCRIPTS_DIR
   echo "sudo cp -r /opt/omegat/scripts/* $SCRIPTS_DIR"
   sudo cp -r /opt/omegat/scripts/* $SCRIPTS_DIR # move standar scripts to user config dir
   echo "cp -r * /home/$USER/.omegat"
-  cp -r * /home/$USER/.omegat
+  sudo cp -r * /home/$USER/.omegat
+
+  # update path to scripts directory
+  perl -i -pe "s~(?<=<scripts_dir>)scripts~${SCRIPTS_DIR}~" omegat.prefs
 
 else
   sudo cp -rf plugins scripts /opt/omegat/OmegaT_$VERSION # add add-ons to install dir
@@ -214,7 +214,7 @@ fi
 # source /home/$USER/.bashrc
 
 #Clean up tmp folder
-rm -rf /home/$USER/.omegat/tmp
+#rm -rf /home/$USER/.omegat/tmp
 
 echo "OmegaT customization has been installed!"
 
