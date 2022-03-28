@@ -64,7 +64,7 @@ echo "OmegaT ${VERSION} will be installed and customized in this Linux machine."
 # @todo: choose desktop or server 
 
 echo ""
-echo "Your sudo password is necessary to create folders and files under /opt"
+echo "Your sudo password is necessary to create folders and files under /opt."
 sudo echo "" >/dev/null
 
 if [ -d /opt/omegat/OmegaT_$VERSION ]
@@ -197,6 +197,7 @@ then
   perl -i -pe "s~(?<=<scripts_dir>)scripts~${SCRIPTS_DIR}~" omegat.prefs
 
   mkdir -p $SCRIPTS_DIR
+  sudo chmod 775 $SCRIPTS_DIR  
   sudo cp -r /opt/omegat/scripts/* $SCRIPTS_DIR # move standar scripts to user config dir
   cp -r * /home/$USER/.omegat
 
