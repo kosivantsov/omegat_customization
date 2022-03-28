@@ -1,5 +1,9 @@
 # OmegaT (cApStAn) customization
 
+## Update 74_cs0 (2022-03-28)
+
+* Scripts: Added `write_project2excel.groovy` again (which was gone for some reason).
+
 ## Update 73_cs0 (2021-11-29)
 
 * Scripts: Added `goto_next_nonunique.groovy` script to go to the next repeated segment in the project.
