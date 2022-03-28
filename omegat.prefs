@@ -29,7 +29,7 @@
     <COLOR_PLACEHOLDER>#ff0000</COLOR_PLACEHOLDER>
     <COLOR_SOURCE>#e5e5e5</COLOR_SOURCE>
     <COLOR_REMOVETEXT_TARGET>#7b00ff</COLOR_REMOVETEXT_TARGET>
-	<COLOR_MARK_COMES_FROM_TM_XAUTO>#ffccff</COLOR_MARK_COMES_FROM_TM_XAUTO>
+    <COLOR_MARK_COMES_FROM_TM_XAUTO>#ffccff</COLOR_MARK_COMES_FROM_TM_XAUTO>
     <COLOR_MARK_COMES_FROM_TM_XENFORCED>#ffd596</COLOR_MARK_COMES_FROM_TM_XENFORCED>
     <dictionary_url>https://cat.capstan.be/OmegaT/hunspell</dictionary_url>
     <display_segment_sources>true</display_segment_sources>
