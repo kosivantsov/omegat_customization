@@ -3,6 +3,9 @@
 ## Update 74_cs0 (2022-03-28)
 
 * Scripts: Added `write_project2excel.groovy` again (which was gone for some reason).
+* Scripts: Added `write_xliff.groovy` script, which exports the project as XLIFF.
+* Config: Updated OMT packing/unpacking settings to prevent including Word files in the project package.
+* Config: Updated match template: more compact and more informative (includes ID and filename now)
 
 ## Update 73_cs0 (2021-11-29)
 
