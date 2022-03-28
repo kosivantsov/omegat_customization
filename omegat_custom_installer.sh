@@ -63,7 +63,9 @@ echo "OmegaT ${VERSION} will be installed and customized in this Linux machine."
 # check: is_installed=$(git --version | wc -l) -> must be 1
 # @todo: choose desktop or server 
 
-
+echo ""
+echo "Your sudo password is necessary to create folders and files under /opt"
+sudo echo "" >/dev/null
 
 if [ -d /opt/omegat/OmegaT_$VERSION ]
 then
