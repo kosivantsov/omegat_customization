@@ -42,6 +42,7 @@
 # constants
 VERSION="5.7.1"
 
+
 # functions
 die() { echo "$*" 1>&2 ; exit 1; }
 
@@ -62,6 +63,12 @@ echo "OmegaT ${VERSION} will be installed and customized in this Linux machine."
 # @ inform of dependencies: git
 # check: is_installed=$(git --version | wc -l) -> must be 1
 # @todo: choose desktop or server 
+
+echo ""
+echo "This script has some dependencies: xmlstarlet and git. "
+echo "If those commands are not installed in your machine, stop here and install them first"
+read -r -s -p $'Press enter to continue...'
+exit 
 
 echo ""
 echo "Your sudo password is necessary to create folders and files under /opt."
@@ -128,7 +135,7 @@ Please enter your choice: "
               die "You have stopped the installation and customization process."
               break
               ;;
-          *) echo "! Iinvalid option $REPLY";;
+          *) echo "! Invalid option $REPLY";;
       esac
   done
 fi
@@ -203,7 +210,11 @@ then
   sudo cp -r * /home/$USER/.omegat
 
   # update path to scripts directory
+  # edit omegat.prefs according to omegat.prefs template
+  # check if omegat.prefs has scripts_dir
+  # if it does, do:
   perl -i -pe "s~(?<=<scripts_dir>)scripts~${SCRIPTS_DIR}~" omegat.prefs
+  # if it does not, add the whole line (xmlstarlet) to omegat.prefs template
 
 else
   sudo cp -rf plugins scripts /opt/omegat/OmegaT_$VERSION # add add-ons to install dir
