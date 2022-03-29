@@ -75,6 +75,7 @@ echo ""
 echo "Your sudo password is necessary to create folders and files under /opt."
 sudo echo "" >/dev/null
 
+REINSTALL_CHOICE=1
 if [ -d /opt/omegat/OmegaT_$VERSION ]
 then
   echo ""
@@ -105,9 +106,9 @@ Please enter your choice: "
           *) echo "! Invalid option $REPLY";;
       esac
   done
+  REINSTALL_CHOICE=$REPLY
 fi
 #echo $opt
-REINSTALL_CHOICE=$REPLY
 
 # desktop or server? 
 echo ""
@@ -124,7 +125,7 @@ select opt in "${options[@]}"
 do
     case $opt in
         "Desktop")
-            echo "OmegaT will be installed for usage with a graphical interface."
+            echo "OmegaT will be optimized for usage with a graphical interface."
             break
             ;;
         "Server")
@@ -138,14 +139,12 @@ do
         *) echo "! Invalid option $REPLY";;
     esac
 done
-
 INTERFACE_CHOICE=$REPLY
 
 # create a temporary folder in /home/, .capstan folder will contain the config
 echo "Creating a temporary folder to download stuff..."
 mkdir -p /home/$USER/.omegat/tmp
 cd /home/$USER/.omegat/tmp
-
 
 # check if OmegaT is already installed or not skipping the installation if it is the case
 if [[ "$REINSTALL_CHOICE" == 1 ]] # re-install
@@ -207,8 +206,10 @@ then
   # wget -0 $file_templ https://gist.githubusercontent.com/msoutopico/ff9b52d2d10f165fa9fdc3f4000559b8/raw/9df5b039007f0998eacba84d8c62ca4f316053a2/omegat.prefs.template
   
   # update path to scripts directory
+  echo "grep scripts_dir $file_templ"
   grep scripts_dir $file_templ
   perl -i -pe "s~(?<=<scripts_dir>)scripts~${SCRIPTS_DIR}~" $file_templ
+  echo "grep scripts_dir $file_templ"
   grep scripts_dir $file_templ
   
   if [ ! -f $prefs_file ]
@@ -228,6 +229,7 @@ then
 
   # 
   sudo cp -rf * /home/$USER/.omegat
+  echo "grep scripts_dir $prefs_file"
   grep scripts_dir $prefs_file
 
 else
@@ -248,9 +250,7 @@ echo "OmegaT $VERSION has been installed and customized successfully."
 # --------------
 
 # @todo
-# remove index.php, list_files.txt, list_paths.txt 
-# remove assets/creds.txt  
-
+# HASH
 
 # remove stuff we don't need
 cd /home/$USER/.omegat

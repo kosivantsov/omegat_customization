@@ -8,3 +8,4 @@ scripts/project_changed/restore_files_order.groovy
 scripts/FlushUneditedEntriesCLI.groovy
 scripts/restore_default_trans_cli.groovy
 scripts/clear_working_tm.groovy
+assets/creds.txt
