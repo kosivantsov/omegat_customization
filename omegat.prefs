@@ -54,6 +54,7 @@
     <scripts_quick_7>replace_with_match_no_tags.groovy</scripts_quick_7>
     <scripts_quick_8>copy_source.groovy</scripts_quick_8>
     <scripts_quick_9>tagwipe.groovy</scripts_quick_9>
+    <scripts_dir>scripts</scripts_dir>
     <search_window_auto_sync>false</search_window_auto_sync>
     <search_window_back_to_initial_segment>false</search_window_back_to_initial_segment>
     <search_window_file_names>true</search_window_file_names>
