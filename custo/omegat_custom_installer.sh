@@ -64,11 +64,12 @@ echo "OmegaT ${VERSION} will be installed and customized in this Linux machine."
 # check: is_installed=$(git --version | wc -l) -> must be 1
 # @todo: choose desktop or server 
 
+# installation or only customization ?
 echo ""
 echo "This script has some dependencies: xmlstarlet and git. "
-echo "If those commands are not installed in your machine, stop here and install them first"
+echo "If those commands are not installed in your machine, stop here and install them first."
 read -r -s -p $'Press enter to continue...'
-exit 
+
 
 echo ""
 echo "Your sudo password is necessary to create folders and files under /opt."
@@ -108,84 +109,79 @@ fi
 #echo $opt
 REINSTALL_CHOICE=$REPLY
 
-if [ ! -d /opt/omegat/OmegaT_$VERSION ]
-then
-  echo ""
-  echo "I would like to know how you will be using OmegaT in this machine."
-  echo "Could you please tell me what kind of machine this is?"
-  echo ""
-  PS3="
+# desktop or server? 
+echo ""
+echo "I would like to know how you will be using OmegaT in this machine."
+echo "Could you please tell me what kind of machine this is?"
+echo ""
+PS3="
 Please enter your choice: "
-  options=( "Desktop" 
-            "Server"
-            "Quit")
-
-  select opt in "${options[@]}"
-  do
-      case $opt in
-          "Desktop")
-              echo "OmegaT will be installed for usage with a graphical interface."
-              break
-              ;;
-          "Server")
-              echo "OmegaT will be optimized for execution on the command line."
-              break
-              ;;
+options=( "Desktop" 
+          "Server"
           "Quit")
-              die "You have stopped the installation and customization process."
-              break
-              ;;
-          *) echo "! Invalid option $REPLY";;
-      esac
-  done
-fi
+
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Desktop")
+            echo "OmegaT will be installed for usage with a graphical interface."
+            break
+            ;;
+        "Server")
+            echo "OmegaT will be optimized for execution on the command line."
+            break
+            ;;
+        "Quit")
+            die "You have stopped the installation and customization process."
+            break
+            ;;
+        *) echo "! Invalid option $REPLY";;
+    esac
+done
 
 INTERFACE_CHOICE=$REPLY
 
-#Create a temporary folder in /home/, .capstan folder will contain the config
+# create a temporary folder in /home/, .capstan folder will contain the config
 echo "Creating a temporary folder to download stuff..."
 mkdir -p /home/$USER/.omegat/tmp
 cd /home/$USER/.omegat/tmp
 
 
-#check if OmegaT is already installed or not skipping the installation if it is the case
-#Taken from OmegaT install script
-
-
-#This is where the part taken for the OMT installer ends
-
-#Download OmegaT
-echo "Downloading and installing OmegaT..."
-arch=`uname -m` #detect if computer is 32 or 64 bits
-
-if [[ "$arch" == "x86_64" ]]
+# check if OmegaT is already installed or not skipping the installation if it is the case
+if [[ "$REINSTALL_CHOICE" == 1 ]] # re-install
 then
-  # 64-bit 
-  #wget -O omegat.tar.bz2 https://downloads.sourceforge.net/project/omegat/OmegaT%20-%20Latest/OmegaT%20${VERSION}/OmegaT_${VERSION}_Beta_Linux_64.tar.bz2
-  cp ~/Downloads/OmegaT_5.7.1_Beta_Linux_64.tar.bz2 omegat.tar.bz2
-  
-  #extract OmegaT archive
-  echo "Extracting OmegaT..."
-  tar -jxf omegat.tar.bz2
-else
-  # 32-bit
-  echo "The OmegaT installer for 32-bit architectures does not include a Linux x86 JRE. A JRE must have been installed independently in your machine, without which OmegaT will not be able to run."
-  wget -0 omegat.zip https://downloads.sourceforge.net/project/omegat/OmegaT%20-%20Latest/OmegaT%20${VERSION}/OmegaT_${VERSION}_Beta_Without_JRE.zip
+  #Download OmegaT
+  echo "Downloading and installing OmegaT..."
+  arch=`uname -m` #detect if computer is 32 or 64 bits
 
-  #extract OmegaT archive
-  echo "Extracting OmegaT..."
-  unzip -qq omegat.zip
-  #wget -0 omegat.tar.bz2 https://downloads.sourceforge.net/project/omegat/OmegaT%20-%20Latest/OmegaT%20${VERSION}/OmegaT_${VERSION}_Beta_Without_JRE.zip
+  if [[ "$arch" == "x86_64" ]]
+  then
+    # 64-bit 
+    #wget -O omegat.tar.bz2 https://downloads.sourceforge.net/project/omegat/OmegaT%20-%20Latest/OmegaT%20${VERSION}/OmegaT_${VERSION}_Beta_Linux_64.tar.bz2
+    cp ~/Downloads/OmegaT_5.7.1_Beta_Linux_64.tar.bz2 omegat.tar.bz2
+    
+    #extract OmegaT archive
+    echo "Extracting OmegaT..."
+    tar -jxf omegat.tar.bz2
+  else
+    # 32-bit
+    echo "The OmegaT installer for 32-bit architectures does not include a Linux x86 JRE. A JRE must have been installed independently in your machine, without which OmegaT will not be able to run."
+    wget -0 omegat.zip https://downloads.sourceforge.net/project/omegat/OmegaT%20-%20Latest/OmegaT%20${VERSION}/OmegaT_${VERSION}_Beta_Without_JRE.zip
+
+    #extract OmegaT archive
+    echo "Extracting OmegaT..."
+    unzip -qq omegat.zip
+    #wget -0 omegat.tar.bz2 https://downloads.sourceforge.net/project/omegat/OmegaT%20-%20Latest/OmegaT%20${VERSION}/OmegaT_${VERSION}_Beta_Without_JRE.zip
+  fi
+
+  # cd to the extracted folder
+  cd OmegaT_${VERSION}*
+
+  #Run omegat installer
+  echo "Installing OmegaT..."
+  bash linux-install.sh
+  cd .. # back to tmp #= cd /home/$USER/.omegat/tmp
 fi
-
-# cd to the extracted folder
-cd OmegaT_${VERSION}*
-
-#Run omegat installer
-echo "Installing OmegaT..."
-bash linux-install.sh
-cd .. # back to tmp
-
 # we are in ~/.omegat/tmp
 
 # get custom files
@@ -193,31 +189,49 @@ echo "Downloading customization files..."
 git clone https://github.com/capstanlqc/omegat_customization.git
 cd omegat_customization
 
-# remove stuff we don't need
-rm todo.md
-#@todo: rm this script, files_to_delete..
+
 
 echo "Applying the customization..."
 if [[ "$INTERFACE_CHOICE" == 1 ]] # gui
-then 
+then
   
+  # for scripts
   SCRIPTS_DIR="/home/$USER/.omegat/scripts" #|| SCRIPTS_DIR="/opt/omegat/OmegaT_${VERSION}/scripts"
-  echo "mkdir -p $SCRIPTS_DIR"
   mkdir -p $SCRIPTS_DIR
-  echo "sudo cp -r /opt/omegat/scripts/* $SCRIPTS_DIR"
-  sudo cp -r /opt/omegat/scripts/* $SCRIPTS_DIR # move standar scripts to user config dir
-  echo "cp -r * /home/$USER/.omegat"
-  sudo cp -r * /home/$USER/.omegat
+  sudo cp -rf /opt/omegat/scripts/* $SCRIPTS_DIR # move standar scripts to user config dir
 
+  # update omegat.prefs
+  prefs_file="/home/$USER/.omegat/omegat.prefs"
+  file_templ="/home/$USER/.omegat/tmp/omegat_customization/omegat.prefs"
+  head $file_templ
+  # wget -0 $file_templ https://gist.githubusercontent.com/msoutopico/ff9b52d2d10f165fa9fdc3f4000559b8/raw/9df5b039007f0998eacba84d8c62ca4f316053a2/omegat.prefs.template
+  
   # update path to scripts directory
-  # edit omegat.prefs according to omegat.prefs template
-  # check if omegat.prefs has scripts_dir
-  # if it does, do:
-  perl -i -pe "s~(?<=<scripts_dir>)scripts~${SCRIPTS_DIR}~" omegat.prefs
-  # if it does not, add the whole line (xmlstarlet) to omegat.prefs template
+  grep scripts_dir $file_templ
+  perl -i -pe "s~(?<=<scripts_dir>)scripts~${SCRIPTS_DIR}~" $file_templ
+  grep scripts_dir $file_templ
+  
+  if [ ! -f $prefs_file ]
+  then
+    mv $file_templ $prefs_file
+  else
+    for node_path in $(xmlstarlet el $file_templ | grep -v -P 'omegat$|preference$')
+    do
+        #node="$(echo "$node_path" | cut -d'/' -f3)"
+        value="$(xmlstarlet sel -t -v "$node_path" $file_templ | xmlstarlet unesc)"
+        xmlstarlet ed --inplace -u $node_path -v "$value" $prefs_file
+        # double quotes are necessary in value variables to avoid "failed to load external entity" error
+        #perl -pi -e 's/&amp;/&/g' $prefs_file
+    done
+    rm $file_templ
+  fi
+
+  # 
+  sudo cp -rf * /home/$USER/.omegat
+  grep scripts_dir $prefs_file
 
 else
-  sudo cp -rf plugins scripts /opt/omegat/OmegaT_$VERSION # add add-ons to install dir
+  sudo cp -rf plugins scripts /opt/omegat/ # add add-ons to install dir
 fi
 
 #Create a launch command
@@ -225,9 +239,10 @@ fi
 # source /home/$USER/.bashrc
 
 #Clean up tmp folder
-#rm -rf /home/$USER/.omegat/tmp
+rm -rf /home/$USER/.omegat/tmp
 
-echo "OmegaT customization has been installed!"
+echo "★★★★"
+echo "OmegaT $VERSION has been installed and customized successfully."
 
 
 # --------------
@@ -235,3 +250,11 @@ echo "OmegaT customization has been installed!"
 # @todo
 # remove index.php, list_files.txt, list_paths.txt 
 # remove assets/creds.txt  
+
+
+# remove stuff we don't need
+cd /home/$USER/.omegat
+yes | sudo rm -rf todo.md custo 
+#@todo: rm this script, files_to_delete..
+
+# make backup copies of the user config dir with timestamp
