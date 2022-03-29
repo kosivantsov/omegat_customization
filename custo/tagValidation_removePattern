@@ -1,0 +1,29 @@
+# PISA/PIAAC HTML TAGS BLOCK
+
+(?:&lt;)
+# followed by anything that is not
+  (?!
+    \s
+    # space
+    |(?:&lt;)
+    # or another opening angle bracket
+    |(/?(EMPTY|[bui]|sup|sub|strong|strike|small|ul|ol|li|a|em|br\s*/?|img|var|span|div|p|run\d|style|center)(\s+[^&gt;]+)?(?:&gt;))
+    # or a html tag
+    |/?[a-z]\d+/?(?:&gt;)
+    # or an omegat tag
+  ).*?
+(?:&gt;)
+
+| # EMAIL TAG BLOCK: 
+
+(?:&lt;)
+  [\w.-]+@[\w.-]+
+(?:&gt;)
+
+| # HASHES BLOCK: 
+
+###+
+
+| # BLABLA BLOCK: 
+
+[xX]{3,}

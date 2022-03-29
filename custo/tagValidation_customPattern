@@ -1,0 +1,46 @@
+# HTML TAGS 
+
+&lt;
+  /?
+  (EMPTY|[bui]|sup|sub|strong|strike|small|ul|ol|li|a|em|br\s*/?|img|var|span|div|p|run\d|style|center)
+  (\s+[^&lt;&gt;]+)??
+&gt;
+
+| # PAQ CODE-ONLY SEGMENTS
+
+^((PA|Q)\d[A-Z0-9]+)$
+
+| # ESCAPED BREAK TAG
+
+&amp;lt;br\s?/&amp;gt;
+
+| # SYMBOLS 
+
+[▼►⇑●∠]
+
+| # ESCAPED HEXADECIMAL ENTITY REFERENCES
+
+&amp;#x\w+?;
+
+| # FORMATTING PLACEHOLDERS 
+
+%s
+
+| # IPSOS BLOCK
+
+(
+  # Hashed entities between {} (eg. {#\.CLROFF}, {#\.CLRON}, {#CLROFF}, {#CLRON}, {#Country}, {#Q12_recode}, {#Q41_ins}, {#Q41A_recode}, {#Q41B_recode}, {#Q41C_recode}, {#Q41D_recode}, {#Q41E_recode}, {#Q41F_recode}, {#Q41G_recode}, {#Q41I_recode}, {#Q41J_recode}, {#Q43_Currency})
+  \{#.+?\}
+  |
+  # Entities preceded by @ between {} (eg. {@Q2_loop}, {@}), needed for IPSOS
+  \{@.*?\}
+  |
+  # Upper case entities between {} (eg. {COUNTRY}, {ANSWER}, {CATEGORY}, {LENGTH}, {MAXANSWERS}, {MAXLENGTH}, {MINANSWERS}, {MINLENGTH}, {QUESTION_NUMBER}, {QUESTION}, {RANGE})
+  \{[A-Z_]+\}
+  |
+  # Upper case entities between [] (eg. [COUNTRY])
+  \[[A-Z_]+\]
+  |
+  # Inserts
+  \^\w+\$
+)
