@@ -37,7 +37,7 @@
 
 ## execution
 
-## bash -c "$(curl -fsSL https://raw.githubusercontent.com/capstanlqc/omegat_customization/master/custo/omegat_custom_installer.sh)"
+## bash -c "$(curl -fsSL https://raw.githubusercontent.com/capstanlqc/omegat_customization/master/custo/omegat_custom_installer.sh)" 
 
 # constants
 VERSION="5.7.1"
