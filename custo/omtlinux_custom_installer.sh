@@ -156,8 +156,8 @@ then
   if [[ "$arch" == "x86_64" ]]
   then
     # 64-bit 
-    #wget -O omegat.tar.bz2 https://downloads.sourceforge.net/project/omegat/OmegaT%20-%20Latest/OmegaT%20${VERSION}/OmegaT_${VERSION}_Beta_Linux_64.tar.bz2
-    cp ~/Downloads/OmegaT_5.7.1_Beta_Linux_64.tar.bz2 omegat.tar.bz2
+    wget -O omegat.tar.bz2 https://downloads.sourceforge.net/project/omegat/OmegaT%20-%20Latest/OmegaT%20${VERSION}/OmegaT_${VERSION}_Beta_Linux_64.tar.bz2
+    #cp ~/Downloads/OmegaT_5.7.1_Beta_Linux_64.tar.bz2 omegat.tar.bz2
     
     #extract OmegaT archive
     echo "Extracting OmegaT..."
