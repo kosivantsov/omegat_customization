@@ -2,7 +2,7 @@
 
 (?:&lt;)
 # followed by anything that is not
-  (?!
+  (?\!
     \s
     # space
     |(?:&lt;)
