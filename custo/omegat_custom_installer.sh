@@ -202,7 +202,6 @@ then
   # update omegat.prefs
   prefs_file="/home/$USER/.omegat/omegat.prefs"
   file_templ="/home/$USER/.omegat/tmp/omegat_customization/omegat.prefs"
-  head $file_templ
   # wget -0 $file_templ https://gist.githubusercontent.com/msoutopico/ff9b52d2d10f165fa9fdc3f4000559b8/raw/9df5b039007f0998eacba84d8c62ca4f316053a2/omegat.prefs.template
   
   # update path to scripts directory
@@ -241,8 +240,8 @@ fi
 #Clean up tmp folder
 rm -rf /home/$USER/.omegat/tmp
 
-echo "★★★★"
-echo "OmegaT $VERSION has been installed and customized successfully."
+echo ""
+echo "★ OmegaT $VERSION has been installed and customized successfully."
 
 
 # --------------
@@ -254,7 +253,7 @@ echo "OmegaT $VERSION has been installed and customized successfully."
 cd /home/$USER/.omegat
 sudo chmod 775 -R *
 sudo chown $USER -R *
-yes | sudo rm -rf todo.md custo 
+sudo rm -rf todo.md custo 
 #@todo: rm this script, files_to_delete..
 
 # make backup copies of the user config dir with timestamp
