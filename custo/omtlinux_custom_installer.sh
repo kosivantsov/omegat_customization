@@ -205,11 +205,7 @@ then
   # wget -0 $file_templ https://gist.githubusercontent.com/msoutopico/ff9b52d2d10f165fa9fdc3f4000559b8/raw/9df5b039007f0998eacba84d8c62ca4f316053a2/omegat.prefs.template
   
   # update path to scripts directory
-  echo "grep scripts_dir $file_templ"
-  grep scripts_dir $file_templ
   perl -i -pe "s~(?<=<scripts_dir>)scripts~${SCRIPTS_DIR}~" $file_templ
-  echo "grep scripts_dir $file_templ"
-  grep scripts_dir $file_templ
   
   if [ ! -f $prefs_file ]
   then
