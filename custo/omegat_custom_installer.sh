@@ -54,9 +54,9 @@ function write_to_file() {
 }
 
 echo ""
-echo "===================================================="
-echo ":: OMEGAT ${VERSION} :: INSTALLATION AND CUSTOMIZATION ::"
-echo "===================================================="
+echo "================================================="
+echo "★ OMEGAT ${VERSION} ★ INSTALLATION AND CUSTOMIZATION ★"
+echo "================================================="
 echo ""
 
 echo "OmegaT ${VERSION} will be installed and customized in this Linux machine." #@todo: better introduction, options -s (silent)
@@ -229,8 +229,6 @@ then
 
   # 
   sudo cp -rf * /home/$USER/.omegat
-  echo "grep scripts_dir $prefs_file"
-  grep scripts_dir $prefs_file
 
 else
   sudo cp -rf plugins scripts /opt/omegat/ # add add-ons to install dir
@@ -254,6 +252,8 @@ echo "OmegaT $VERSION has been installed and customized successfully."
 
 # remove stuff we don't need
 cd /home/$USER/.omegat
+sudo chmod 775 -R *
+sudo chown $USER -R *
 yes | sudo rm -rf todo.md custo 
 #@todo: rm this script, files_to_delete..
 
