@@ -252,7 +252,7 @@ echo "★ OmegaT $VERSION has been installed and customized successfully."
 # remove stuff we don't need
 cd /home/$USER/.omegat
 sudo chmod 775 -R *
-sudo chown $USER -R *
+sudo chown $USER:$USER -R *
 sudo rm -rf todo.md custo 
 #@todo: rm this script, files_to_delete..
 
