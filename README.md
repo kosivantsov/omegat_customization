@@ -13,7 +13,7 @@ The customization consists of tweaked preferences and configuration files as wel
 ### Linux (both desktop and servers)
 
 ```
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/capstanlqc/omegat_customization/master/custo/omegat_custom_installer.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/capstanlqc/omegat_customization/master/custo/omtlinux_custom_installer.sh)"
 ```
 
 ### Windows
