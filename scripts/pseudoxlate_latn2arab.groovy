@@ -1,4 +1,4 @@
-/* :name = Pseudo-translate project :description=
+/* :name = Pseudo-translate projec (Arabic) :description=
  * 
  * @author      Manuel Souto Pico
  * @date        2020-09-12

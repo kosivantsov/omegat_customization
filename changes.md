@@ -1,5 +1,9 @@
 # OmegaT (cApStAn) customization
 
+## Update 75_cs0 ()
+
+* Scripts: Renamed script `pseudoxlate_latn2arab.groovy` ("Arabic" added in title)
+
 ## Update 74_cs0 (2022-03-28)
 
 * Scripts: Added `write_project2excel.groovy` again (which was gone for some reason).
