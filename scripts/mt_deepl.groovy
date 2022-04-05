@@ -35,8 +35,6 @@ String api_key = api_key_file.text
 
 def get_transl(segm_list, source_lang, target_lang) {
     
-    String api_key = "4bf91305-0c1b-5a43-1a27-35af98ccdf55"
-
     try{
         def rest = new RESTClient('https://api.deepl.com/')
 
@@ -73,16 +71,18 @@ if (eventType == LOAD) {
     def segm_list = project.allEntries.collect { it.getSrcText() } // SourceTextEntry
     def translations = get_transl(segm_list, source_lang, target_lang)
 
-    project.allEntries.each { seg ->
+    project.allEntries.each { ste ->
 
-        // editor.gotoEntry(seg.entryNum())
+        // editor.gotoEntry(ste.entryNum())
 
-        def index = seg.entryNum()-1
+        def index = ste.entryNum()-1
         def target = translations[index]
                 
         // editor.replaceEditText(target)
 
-        project.getTranslationInfo(seg) = target
+        project.setTranslation(ste.getKey().sourceText, target, true, false) // isDefault
+        // project.setTranslation(currentSegment, "FRA", true);
+        // setTranslation(ste, e, isDefault, TMXEntry.ExternalLinked.xAUTO);
 
     }
     console.println(">>> Translated with DeepL")
