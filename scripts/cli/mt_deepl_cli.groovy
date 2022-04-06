@@ -14,6 +14,9 @@
  * 0.0.5:   writes to the internal TM and to backup file project_mt.tmx
  */
 
+// to be run as 
+// java -jar /opt/omegat/OmegaT_5.7.1/OmegaT.jar proj --script=/home/pico/.omegat/scripts/cli/mt_deepl_cli.groovy --mode=console-translate
+
 // dependencies
 @Grapes([
 	@Grab(group='com.github.groovy-wslite', module='groovy-wslite', version='1.1.3'),
@@ -100,12 +103,12 @@ def source_lang =   prop.getSourceLanguage()
 def target_lang =   prop.getTargetLanguage()
 def proj_name =     prop.projectName
 def tmdir_fs =      prop.getTMRoot() // fs = forward slash
-def omegat_dir = prop.getProjectInternal() // same as prop.projectInternal
+def omegat_dir =    prop.getProjectInternal() // same as prop.projectInternal
 // tmdir = new File(tmdir_fs) // not needed here
 
 String final_omegat_tmx_fpath = prop.getProjectRoot() + prop.getProjectName() + OConsts.OMEGAT_TMX + OConsts.TMX_EXTENSION;
 def project_save_fobj = new File(prop.projectInternal, OConsts.STATUS_EXTENSION)
-tmxsave = prop.getProjectInternal() + OConsts.STATUS_EXTENSION
+def project_save_fpath = prop.getProjectInternal() + OConsts.STATUS_EXTENSION
 // def project_mt = new File(omegat_dir + "project_mt.tmx")
 String project_mt_fpath = omegat_dir + "project_mt.tmx"
 
@@ -113,40 +116,19 @@ String project_mt_fpath = omegat_dir + "project_mt.tmx"
 config_dir = StaticUtils.getConfigDir()
 config_file = new File(config_dir + "containers_config.properties")
 
-console.println("============================================")
-console.println("")
-
-console.println("final_omegat_tmx_fpath:" + final_omegat_tmx_fpath)
-console.println("project_mt_fpath:      " + project_mt_fpath)
-console.println("project_save_fobj:    " + project_save_fobj)
-
-console.println("")
-console.println("============================================")
-
-
-x = final_omegat_tmx_fpath.getClass() // class java.lang.String
-console.println(x)
-x = project_mt_fpath.getClass() // class java.lang.String
-console.println(x) 
-x = tmdir_fs.getClass() // class java.lang.String
-console.println(x) 
-x = project_save_fobj.getClass() // class java.io.File
-console.println(x) 
-x = tmxsave.getClass() // class java.lang.String
-console.println(x) 
-
+// final_omegat_tmx_fpath.getClass() // => class java.lang.String
+// project_mt_fpath.getClass() // => class java.lang.String
+// tmdir_fs.getClass() // => class java.lang.String
+// project_save_fobj.getClass() // => class java.io.File
+// project_save_fpath.getClass() // => class java.lang.String
 
 console.println("###### SCRIPT IS RUNNING!!")
-
 
 
 def segm_list = project.allEntries.collect { it.getSrcText() } // SourceTextEntry
 def translations = get_transl(segm_list, source_lang, target_lang)
 
-
 project.allEntries.each { ste ->
-
-    // editor.gotoEntry(ste.entryNum()) 
 
     def index = ste.entryNum()-1
     def target = translations[index]
@@ -154,28 +136,23 @@ project.allEntries.each { ste ->
     def te = new PrepareTMXEntry()
     te.source = ste.getSrcText()
     te.translation = target
-            
-    // editor.replaceEditText(target)
 
+    // setTranslation(ste, te, isDefault, TMXEntry.ExternalLinked.xAUTO)
     project.setTranslation(ste, te, true, TMXEntry.ExternalLinked.xAUTO)
-    // setTranslation(ste, e, isDefault, TMXEntry.ExternalLinked.xAUTO)
 
 }
 
 // the true flag stands for project modified (@question: not sure why that matters)
-project.ProjectTMX.save(prop, tmxsave, true)
+project.ProjectTMX.save(prop, project_save_fpath, true)
 
 // project.ProjectTMX.save(prop, project_save, true)
 console.println(">>> Translated with DeepL")
 
-
-// String sourceFilePath = final_omegat_tmx
-// String destinationFilePath = project_mt2
 // move of copy file
-src_fpath_str = final_omegat_tmx_fpath  // string
+// src_fpath_str = final_omegat_tmx_fpath  // string
+src_fpath_str = project_save_fpath      // string
 tgt_fpath_str = project_mt_fpath        // string
 (new AntBuilder()).copy(file: src_fpath_str, tofile: tgt_fpath_str)
-
 
 // does not work
 // Files.copy(final_omegat_tmx_fpath, project_mt_fpath, java.nio.file.StandardCopyOption.REPLACE_EXISTING)
@@ -185,18 +162,18 @@ tgt_fpath_str = project_mt_fpath        // string
 // Files.move(Paths.get(final_omegat_tmx), Paths.get(project_save), StandardCopyOption.REPLACE_EXISTING)
 // Files.move(final_omegat_tmx, project_save, StandardCopyOption.REPLACE_EXISTING)
 // Files.copy(src_fpath_str.toPath(), tgt_fpath_str.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING)
-Files.move(src_fpath_str.toPath(), tgt_fpath_str.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING)
+// Files.move(src_fpath_str.toPath(), tgt_fpath_str.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING)
 
 
-
-// garbage collector...
-
+// garbage collector... ?
 return
 
 /* @todo:
-- overwrite only empty entries (using xmlParser.parse(projectSave))
+- add option to overwrite only empty entries (using xmlParser.parse(projectSave))
 - add it to scripts/cli in the customization
 - send project_mt.tmx and excel to xdiff when MT'ing?? 
+- edit userID in modification to have "Translation last modified by DeepL on ...s"
+- delete exported TMs and target file (to make package lighter)
 */
 
 
